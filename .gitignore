@@ -344,3 +344,4 @@ venv/*
 assets/i18n/*
 
 *.sqlite3
+media/
