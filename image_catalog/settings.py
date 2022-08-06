@@ -39,7 +39,8 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 THIRD_PARTY_APPS = [
-    "rest_framework"
+    "rest_framework",
+    "drf_yasg",
 ]
 LOCAL_APPS = [
     'product_images.apps.ProductImagesConfig'
@@ -123,6 +124,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+STATIC_ROOT = str(BASE_DIR / "staticfiles")
 
 STATIC_URL = 'static/'
 

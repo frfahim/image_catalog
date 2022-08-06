@@ -14,8 +14,39 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework.permissions import AllowAny
+
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Image Catalog API Endpoints",
+        default_version="v1",
+        description="API endpoints for Image Catalog backend application",
+        terms_of_service="",
+        contact=openapi.Contact(email="farhadur.fahim@gmail.com")
+    ),
+    public=True,
+    permission_classes=[AllowAny],
+)
+
+
+api_patterns = ([
+    path(
+        f"docs/",
+        schema_view.with_ui("swagger", cache_timeout=0), name="image-catalog-swagger-ui"
+    ),
+    path(
+        "users/",
+        include("product_images.urls", namespace="images")
+    ),
+], "api")
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("api/v1/", include(api_patterns, namespace="API_V1")),
 ]
