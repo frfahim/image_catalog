@@ -1,0 +1,1 @@
+from .image_scrapper_service import ImageScrapperService
