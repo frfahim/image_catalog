@@ -42,7 +42,7 @@ api_patterns = ([
         schema_view.with_ui("swagger", cache_timeout=0), name="image-catalog-swagger-ui"
     ),
     path(
-        "users/",
+        "images/",
         include("product_images.urls", namespace="images")
     ),
 ], "api")

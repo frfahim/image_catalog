@@ -16,7 +16,7 @@ class ImageSearchAPIView(ListAPIView):
     def list(self, request: Request, *args, **kwargs) -> Response:
         query_params_dict = request.query_params.dict()
         image_list = self.service_class().image_list(query_params_dict)
-        serializer = self.serializer_class(data=image_list)
+        serializer = self.serializer_class(image_list, many=True, context=self.get_serializer_context())
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 
@@ -28,5 +28,5 @@ class ImageMetadataSearchAPIView(ListAPIView):
     def list(self, request: Request, *args, **kwargs) -> Response:
         query_params_dict = request.query_params.dict()
         image_list = self.service_class().image_metadata_list(query_params_dict)
-        serializer = self.serializer_class(data=image_list)
+        serializer = self.serializer_class(image_list, many=True, context=self.get_serializer_context())
         return Response(data=serializer.data, status=status.HTTP_200_OK)

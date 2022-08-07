@@ -19,7 +19,7 @@ class ImageScrapperService(object):
         domain_name = self.url.split("//")[-1].split("/")[0].split('?')[0]
         try:
             folder_name = domain_name.replace(".", "-")
-        except:
+        except: # handle exception explicitly
             folder_name = domain_name
         return folder_name
 
@@ -33,7 +33,6 @@ class ImageScrapperService(object):
 
             for img in image_links:
                 if img.get("src"):
-                    # image_list_data.append({"url": img["src"], "alt": img.get("alt", "")})
                     image_list_data.append(img["src"])
 
             return image_list_data
@@ -52,9 +51,9 @@ class ImageScrapperService(object):
             image_file.name = f"{self.folder}/{file_name}.jpg"
             self.image_service.save_image(image_file, self.url)
 
+    # TODO: make this task asyncronus
     def scrape_images(self):
         image_data = self._get_info()
 
-        for i in range(0, len(image_data)):
-            if image_data[i]:
-                self._download_images(image_data[i])
+        for img in image_data:
+            self._download_images(img)

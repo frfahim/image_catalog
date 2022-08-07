@@ -10,7 +10,7 @@ class Images(models.Model):
         verbose_name=_("URL"),
         help_text=_("URL of the Image"),
     )
-    media = models.FileField(
+    media = models.ImageField(
         upload_to="images/",
         verbose_name=_("File"),
         help_text=_("Image File"),

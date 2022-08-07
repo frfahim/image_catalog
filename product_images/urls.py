@@ -16,7 +16,7 @@ urlpatterns = [
         name="tweet-create"
     ),
     path(
-        "search/metadata/",
+        "metadata/search/",
         ImageMetadataSearchAPIView.as_view(),
         name="tweet-create"
     ),
