@@ -43,7 +43,7 @@ THIRD_PARTY_APPS = [
     "drf_yasg",
 ]
 LOCAL_APPS = [
-    'product_images.apps.ProductImagesConfig'
+    'images.apps.ImagesConfig'
 ]
 
 INSTALLED_APPS  = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

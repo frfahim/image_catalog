@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from product_images.models import Images
-from product_images.services import ImageService
+from images.models import Images
+from images.services import ImageService
 
 # defining a random image sizes, we need to define a proper size for real life usages
 IMAGE_SIZES = {

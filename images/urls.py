@@ -1,6 +1,6 @@
 from django.urls import path, include
 
-from product_images.views import *
+from images.views import *
 
 
 app_name = "images"

@@ -4,8 +4,8 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView
 
-from product_images.serializers import ImageListSerializer, ImageMetadataListSerializer
-from product_images.services import ImageService
+from images.serializers import ImageListSerializer, ImageMetadataListSerializer
+from images.services import ImageService
 
 
 class ImageSearchAPIView(ListAPIView):

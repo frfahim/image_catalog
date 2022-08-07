@@ -43,7 +43,7 @@ api_patterns = ([
     ),
     path(
         "images/",
-        include("product_images.urls", namespace="images")
+        include("images.urls", namespace="images")
     ),
 ], "api")
 

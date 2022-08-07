@@ -5,8 +5,8 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
 
-from product_images.serializers import DownloadImageSerializer
-from product_images.services import ImageScrapperService
+from images.serializers import DownloadImageSerializer
+from images.services import ImageScrapperService
 
 
 class DownloadImageAPIView(CreateAPIView):

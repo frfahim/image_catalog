@@ -1,5 +1,5 @@
 import os
-from product_images.models import Images
+from images.models import Images
 from django.core.files.images import ImageFile
 from django.core.files.storage import get_storage_class
 from django.conf import settings

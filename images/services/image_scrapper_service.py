@@ -2,7 +2,7 @@ import uuid
 import requests
 from io import BytesIO
 from bs4 import BeautifulSoup
-from product_images.services.image_service import ImageService
+from images.services.image_service import ImageService
 from rest_framework.exceptions import APIException
 
 
