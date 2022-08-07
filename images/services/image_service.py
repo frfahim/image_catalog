@@ -99,8 +99,15 @@ class ImageService(object):
                 x_size=width,
                 y_size=height
             )
-            image.save(os.path.join(settings.MEDIA_ROOT, resized_image_name_with_path))
-            image.close()
+            try:
+                image.save(os.path.join(settings.MEDIA_ROOT, resized_image_name_with_path))
+                image.close()
+            except OSError as exp:
+                image = Image.open(image_file)
+                image.convert('RGB').save(os.path.join(settings.MEDIA_ROOT, resized_image_name_with_path))
+                image.close()
+            except Exception as exp:
+                return
 
         image = storage.url(resized_image_name_with_path)
         return image
