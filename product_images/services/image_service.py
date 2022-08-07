@@ -3,7 +3,7 @@ from django.core.files.images import ImageFile
 
 
 class ImageService(object):
-    model_class = Images
+    model = Images
 
     def map_image_data(self, image_object, url):
         """
@@ -27,9 +27,28 @@ class ImageService(object):
     def save_image(self, image_object, url):
         image_data = self.map_image_data(image_object, url)
         try:
-            image_instance = Images.objects.create(**image_data)
+            image_instance = self.model.objects.create(**image_data)
         except Exception as exp:
             # log this exception
             image_instance = None
             print("Couldn't save image")
         return image_instance
+
+    def image_list(self, query_params):
+        images = self.model.objects.all()
+        if query_params.get("id"):
+            images = images.filter(id=query_params["id"])
+        if query_params.get("url"):
+            images = images.filter(orginal_url__contains=query_params["url"])
+        if query_params.get("size"):
+            pass
+        return images
+
+    def image_metadata_list(self, query_params):
+        images = self.model.objects.all()
+        if query_params.get("id"):
+            images = images.filter(id=query_params["id"])
+        if query_params.get("url"):
+            images = images.filter(orginal_url__contains=query_params["url"])
+        return images
+
