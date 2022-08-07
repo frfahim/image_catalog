@@ -83,6 +83,7 @@ WSGI_APPLICATION = 'image_catalog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# TODO: add postgres as DB, for simplicity currently using sqlite3 as DB
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
